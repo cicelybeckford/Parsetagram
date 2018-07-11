@@ -11,21 +11,30 @@ import android.widget.EditText;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity {
 
-    public EditText inputUsername;
-    public EditText inputPassword;
-    public Button btnLogin;
+    private EditText inputUsername;
+    private EditText inputPassword;
+    private Button btnLogin;
+    private Button btnSignup;
+    private ParseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        inputUsername = (EditText) findViewById(R.id.inputUsername);
-        inputPassword = (EditText) findViewById(R.id.inputPassword);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
+        inputUsername = findViewById(R.id.inputUsername);
+        inputPassword = findViewById(R.id.inputPassword);
+        btnLogin = findViewById(R.id.btnLogin);
+        btnSignup = findViewById(R.id.btnSignup);
+        currentUser = ParseUser.getCurrentUser();
+
+        if (currentUser != null) {
+            startActivity(new Intent(this, HomeActivity.class));
+        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,6 +43,35 @@ public class MainActivity extends AppCompatActivity {
                 final String password = inputPassword.getText().toString();
 
                 login(username, password);
+            }
+        });
+
+        btnSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String username = inputUsername.getText().toString();
+                final String password = inputPassword.getText().toString();
+
+                signUp(username, password);
+            }
+        });
+    }
+
+    private void signUp (String username, String password) {
+        ParseUser user = new ParseUser();
+        user.setPassword(password);
+        user.setUsername(username);
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    e.printStackTrace();
+                }
             }
         });
     }

@@ -43,4 +43,15 @@
         android:text="Log In"
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="312dp" />
+
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="103dp"
+        android:background="@color/colorAccent"
+        android:cursorVisible="true"
+        android:text="Sign up" />
 </RelativeLayout>
