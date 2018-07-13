@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CommentsActivity">
+
+    <RelativeLayout
+        android:id="@+id/post_info_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/ivProfileImgDetails"
+            android:layout_width="38dp"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            app:srcCompat="@drawable/placeholder" />
+
+        <TextView
+            android:id="@+id/tvUserDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="62dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@+id/ivProfileImgDetails"
+            android:text="TextView"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvUserDetails"
+            android:layout_below="@+id/tvUserDetails"
+            android:layout_marginTop="4dp"
+            android:text="TextView"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvCaptionDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/tvUserDetails"
+            android:layout_toRightOf="@+id/tvUserDetails"
+            android:text="TextView" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/vBorderDetails"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/post_info_container"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/border" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvComments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/post_info_container" />
+
+    <View
+        android:id="@+id/vBorderComment"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/rvComments"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/border" />
+
+    <LinearLayout
+        android:id="@+id/new_comment_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/vBorderComment"
+        android:layout_marginLeft="12dp">
+
+        <ImageView
+            android:id="@+id/ivUserProfileImg"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/placeholder" />
+
+        <EditText
+            android:id="@+id/etNewComment"
+            android:layout_width="261dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/ivNewCommImg"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Add a comment..."
+            android:inputType="textPersonName"
+            android:singleLine="false" />
+
+        <Button
+            android:id="@+id/btnPostComment"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:text="Post"
+            android:textColor="@color/blue_6" />
+    </LinearLayout>
+
+</RelativeLayout>

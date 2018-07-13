@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         btnSignup = findViewById(R.id.btnSignup);
         currentUser = ParseUser.getCurrentUser();
 
-        if (currentUser != null) {
-            startActivity(new Intent(this, HomeActivity.class));
+       if (currentUser != null) {
+           startActivity(new Intent(this, FeedActivity.class));
         }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    final Intent intent = new Intent(MainActivity.this, FeedActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 if (e == null) {
                     Log.d("LoginActivity", "Login Successful");
 
-                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    final Intent intent = new Intent(MainActivity.this, FeedActivity.class);
                     startActivity(intent);
                     finish();
                 }

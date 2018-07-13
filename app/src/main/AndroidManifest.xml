@@ -27,10 +27,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
-            android:label="Home" />
-        <activity android:name=".PostActivity" />
-        <activity android:name=".LogoutActivity"></activity>
+            android:name=".PostActivity"
+            android:label="Post" />
+        <activity android:name=".LogoutActivity" />
+        <activity android:name=".FeedActivity" />
+        <activity
+            android:name=".CommentsActivity"
+            android:label="Comments" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

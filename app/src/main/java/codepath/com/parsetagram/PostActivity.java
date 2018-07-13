@@ -21,6 +21,7 @@ public class PostActivity extends AppCompatActivity {
     private String description;
     private ImageView ivPost;
     private TextView inputDescription;
+    private PostAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class PostActivity extends AppCompatActivity {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-                    Log.d("HomeActivity", "Create post success!");
+                    Log.d("FeedActivity", "Create post success!");
                 }
                 else {
                     e.printStackTrace();

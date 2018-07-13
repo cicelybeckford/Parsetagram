@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:checked="false"
+        android:icon="@drawable/home_selector"
+        android:orderInCategory="0"
+        android:title=""
+        app:itemIconTint="@color/black"
+        app:labelVisibilityMode="unlabeled"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_post"
+        android:checked="false"
+        android:icon="@drawable/newpost_selector"
+        android:title=""
+        app:itemIconTint="@color/black"
+        app:labelVisibilityMode="unlabeled"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_user"
+        android:checked="false"
+        android:icon="@drawable/user_selector"
+        android:orderInCategory="100"
+        android:title=""
+        app:itemIconTint="@color/black"
+        app:labelVisibilityMode="unlabeled"
+        app:showAsAction="always" />
+</menu>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_camera"
+        android:checked="false"
+        android:icon="@drawable/camera_shadow_fill"
+        android:title=""
+        app:itemIconTint="@color/black"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_name"
+        android:checked="false"
+        android:icon="@drawable/nav_logo_whiteout"
+        android:title=""
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_dm"
+        android:checked="false"
+        android:icon="@drawable/direct"
+        android:title=""
+        app:itemIconTint="@color/black"
+        app:showAsAction="always" />
+</menu>
