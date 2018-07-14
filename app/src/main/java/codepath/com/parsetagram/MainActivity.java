@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
        if (currentUser != null) {
            startActivity(new Intent(this, FeedActivity.class));
+           finish();
         }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {

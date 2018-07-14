@@ -55,8 +55,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.tvUser.setText(post.getUser().getUsername());
         holder.tvUser2.setText(post.getUser().getUsername());
         holder.tvCaption.setText(post.getDescription());
-        holder.tvCreatedAt.setText(post.getCreatedAt().toString());
-        //holder.tvComments.setText("View all" + post.getComments().size() + "comments"); TODO
+        holder.tvCreatedAt.setText(post.getRelativeTimeAgo());
+        holder.tvComments.setText("View all comments");
         holder.tvLikes.setText(post.getLikes() + " likes");
 
         Glide.with(context).load(post.getImage().getUrl()).into(holder.ivPostImg);

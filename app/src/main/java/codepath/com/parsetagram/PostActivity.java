@@ -1,8 +1,8 @@
 package codepath.com.parsetagram;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,7 +21,6 @@ public class PostActivity extends AppCompatActivity {
     private String description;
     private ImageView ivPost;
     private TextView inputDescription;
-    private PostAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,9 @@ public class PostActivity extends AppCompatActivity {
             @Override
             public void done(ParseException e) {
                 if (e == null) {
-                    Log.d("FeedActivity", "Create post success!");
+                    Intent intent = new Intent(PostActivity.this, FeedActivity.class);
+                    intent.putExtra("newpost", newPost);
+                    startActivity(intent);
                 }
                 else {
                     e.printStackTrace();

@@ -33,7 +33,8 @@
         <activity android:name=".FeedActivity" />
         <activity
             android:name=".CommentsActivity"
-            android:label="Comments" />
+            android:label="Comments"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".ProfileActivity"></activity>
     </application>
 

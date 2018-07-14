@@ -57,7 +57,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.tvCommentUser.setText(parseUser.getUsername());
         holder.tvMessage.setText(comment.getMessage());
         holder.tvlikesCount.setText(comment.getLikes().toString() + " likes");
-        holder.tvTimestamp.setText(comment.getCreatedAt().toString());
+        holder.tvTimestamp.setText(comment.getRelativeTimeAgo());
         //Glide.with(context).load(user.getImage().getUrl()).into(holder.ivProfilePic);
     }
 

@@ -34,16 +34,17 @@ import codepath.com.parsetagram.model.Post;
 public class FeedActivity extends AppCompatActivity {
     private static final String imagePath = Environment.getExternalStorageDirectory().getPath();
     private final ParseUser user = ParseUser.getCurrentUser();
+    private final Post.Query postsQuery = new Post.Query();
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_READ_STORAGE = 1;
     private static final int REQUEST_WRITE_STORAGE = 1;
-    private final Post.Query postsQuery = new Post.Query();
     private SwipeRefreshLayout swipeContainer;
     private BottomNavigationView bottomNavigationView;
-    PostAdapter postAdapter;
-    ArrayList<Post> posts;
-    RecyclerView rvPosts;
+    private RecyclerView rvPosts;
     private Bitmap imageBitmap;
+    private Post newPost;
+    protected PostAdapter postAdapter;
+    protected ArrayList<Post> posts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,11 @@ public class FeedActivity extends AppCompatActivity {
         rvPosts.setAdapter(postAdapter);
 
         populateFeed();
+        newPost = getIntent().getParcelableExtra("newpost");
+        if (newPost != null) {
+            posts.add(newPost);
+            postAdapter.notifyDataSetChanged();
+        }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -131,6 +137,7 @@ public class FeedActivity extends AppCompatActivity {
                     Intent intent = new Intent(FeedActivity.this, PostActivity.class);
                     intent.putExtra("parseFile", parseFile);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -139,7 +146,7 @@ public class FeedActivity extends AppCompatActivity {
     private void refreshFeed() {
         postsQuery.getTop().withUser();
 
-        postsQuery.findInBackground(new FindCallback<Post>() {
+        postsQuery.orderByAscending("createdAt").findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> objects, ParseException e) {
                 ArrayList<Post> temp_posts = new ArrayList<>();
@@ -164,7 +171,7 @@ public class FeedActivity extends AppCompatActivity {
     private void populateFeed() {
         postsQuery.getTop().withUser();
 
-        postsQuery.findInBackground(new FindCallback<Post>() {
+        postsQuery.orderByAscending("createdAt").findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> objects, ParseException e) {
                 Post post = null;

@@ -1,11 +1,12 @@
 package codepath.com.parsetagram;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -69,15 +70,18 @@ public class CommentsActivity extends AppCompatActivity {
         btnPostComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("button", "works");
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(etNewComment.getWindowToken(), 0);
                 final Comment newComment = new Comment();
                 String message = etNewComment.getText().toString();
+                etNewComment.getText().clear();
                 newComment.setMessage(message);
                 newComment.setUser(parseUser);
                 newComment.setPost(post);
                 newComment.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
+                        comments.add(newComment);
                         commentAdapter.notifyDataSetChanged();
                     }
                 });
@@ -87,7 +91,7 @@ public class CommentsActivity extends AppCompatActivity {
 
     private void loadComments() {
         commentsQuery.findComment(post);
-        commentsQuery.findInBackground(new FindCallback<Comment>() {
+        commentsQuery.orderByAscending("createdAt").findInBackground(new FindCallback<Comment>() {
             @Override
             public void done(List<Comment> objects, ParseException e) {
                 for (int i = 0; i < objects.size(); i++) {

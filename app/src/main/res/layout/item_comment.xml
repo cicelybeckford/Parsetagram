@@ -34,6 +34,7 @@
         android:layout_marginRight="10dp"
         android:layout_toEndOf="@+id/ivProfilePic"
         android:text="TextView"
+        android:textColor="@color/grey_6"
         android:textSize="12sp" />
 
     <TextView
@@ -42,7 +43,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvCommentUser"
         android:layout_toRightOf="@+id/tvTimestamp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/grey_6"
+        android:textSize="12sp"
+        android:textStyle="bold" />
 
     <ImageButton
         android:id="@+id/btnLikeComment"
@@ -54,6 +58,7 @@
         android:layout_marginTop="16dp"
         android:background="@android:color/transparent"
         android:scaleType="fitXY"
+        android:tint="@color/grey_6"
         app:srcCompat="@drawable/ic_heart_outline_24dp" />
 
     <TextView

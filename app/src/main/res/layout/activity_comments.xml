@@ -78,21 +78,23 @@
         android:id="@+id/vBorderComment"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/rvComments"
+        android:layout_above="@id/new_comment_container"
         android:layout_marginBottom="0dp"
         android:background="@drawable/border" />
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/new_comment_container"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/vBorderComment"
-        android:layout_marginLeft="12dp">
+        android:layout_height="39dp"
+        android:layout_below="@+id/rvComments"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:gravity="bottom">
 
         <ImageView
             android:id="@+id/ivUserProfileImg"
-            android:layout_width="46dp"
-            android:layout_height="46dp"
+            android:layout_width="38dp"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
             android:scaleType="fitXY"
@@ -100,11 +102,13 @@
 
         <EditText
             android:id="@+id/etNewComment"
-            android:layout_width="261dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/ivNewCommImg"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="46dp"
             android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:ems="10"
             android:hint="Add a comment..."
             android:inputType="textPersonName"
@@ -112,13 +116,14 @@
 
         <Button
             android:id="@+id/btnPostComment"
-            android:layout_width="76dp"
-            android:layout_height="wrap_content"
+            android:layout_width="73dp"
+            android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:background="@android:color/transparent"
+            android:layout_marginBottom="0dp"
+            android:background="@color/grey_1_80_transparent"
             android:text="Post"
             android:textColor="@color/blue_6" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
