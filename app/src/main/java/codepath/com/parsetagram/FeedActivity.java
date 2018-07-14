@@ -77,7 +77,7 @@ public class FeedActivity extends AppCompatActivity {
                         newPost();
                         return true;
                     case R.id.action_user:
-                        logOut();
+                        profileView();
                         return true;
                 }
                 return true;
@@ -91,8 +91,8 @@ public class FeedActivity extends AppCompatActivity {
         swipeContainer.setColorSchemeResources(R.color.black);
     }
 
-    private void logOut () {
-        Intent intent = new Intent(this,LogoutActivity.class);
+    private void profileView () {
+        Intent intent = new Intent(this,ProfileActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);
         finish();

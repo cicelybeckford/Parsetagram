@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -62,7 +63,7 @@ public class CommentsActivity extends AppCompatActivity {
         tvUserDetails.setText(parseUser.getUsername());
         tvCaptionDetails.setText(post.getDescription());
         tvTime.setText(post.getCreatedAt().toString());
-        //Glide.with(getApplicationContext()).load(user.getImage().getUrl()).into(ivProfileImgDetails); TODO
+        if (user.getImage() != null) { Glide.with(getApplicationContext()).load(user.getImage().getUrl()).into(ivProfileImgDetails);}
         rvComments.setLayoutManager(new LinearLayoutManager(this));
         rvComments.setAdapter(commentAdapter);
         loadComments();

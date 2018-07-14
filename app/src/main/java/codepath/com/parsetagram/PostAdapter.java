@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -78,6 +79,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public ImageButton btnLike;
         public ImageButton btnComment;
         public ImageButton btnDm;
+        public LinearLayout linear_layout_post;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -92,11 +94,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
             btnLike = itemView.findViewById(R.id.btnLike);
             btnComment= itemView.findViewById(R.id.btnComment);
+            linear_layout_post = itemView.findViewById(R.id.linear_layout_post);
 
             tvComments.setOnClickListener(this);
             tvCaption.setOnClickListener(this);
             btnComment.setOnClickListener(this);
             btnLike.setOnClickListener(this);
+            tvUser2.setOnClickListener(this);
+            linear_layout_post.setOnClickListener(this);
+
         }
 
         @Override
@@ -109,14 +115,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                     Log.d("PostAdapter", "Clicked Post");
                     Intent intent = new Intent(context, CommentsActivity.class);
                     intent.putExtra("post", post);
-                    intent.putExtra("user", parseUser
-                    );
+                    intent.putExtra("user", parseUser);
                     context.startActivity(intent);
                 } else if (view.getId() == btnLike.getId()){
                     Post post = mPosts.get(position);
                     post.updateLikes();
                     post.saveInBackground();
                     notifyDataSetChanged();
+                }
+                else if (view.getId() == tvUser2.getId() || view.getId() == linear_layout_post.getId()) {
+                    Post post = mPosts.get(position);
+                    ParseUser parseUser = post.getUser();
+                    Intent intent = new Intent(context, ProfileActivity.class);
+                    intent.putExtra("user", parseUser);
+                    context.startActivity(intent);
                 }
             }
         }

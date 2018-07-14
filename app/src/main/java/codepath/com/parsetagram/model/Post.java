@@ -77,5 +77,11 @@ public class Post extends ParseObject{
             include("user");
             return this;
         }
+
+        public Query getUserPost(ParseUser parseUser) {
+            whereEqualTo(KEY_USER, parseUser);
+            include("user");
+            return this;
+        }
     }
 }

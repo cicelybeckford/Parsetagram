@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void signUp (String username, String password) {
-        ParseUser user = new ParseUser();
+        ParseUser user = (ParseUser) ParseUser.create("_User");
         user.setPassword(password);
         user.setUsername(username);
         user.signUpInBackground(new SignUpCallback() {

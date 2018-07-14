@@ -6,7 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,14 +47,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Post post = mPosts.get(position);
 
-        holder.tvUser.setText(post.getUser().getUsername());
-        holder.tvUser2.setText(post.getUser().getUsername());
-        holder.tvCaption.setText(post.getDescription());
-        holder.tvCreatedAt.setText(post.getCreatedAt().toString());
-        //holder.tvComments.setText("View all" + post.getComments().size() + "comments"); TODO
-        holder.tvLikes.setText(post.getLikes() + " likes");
-
-        //Glide.with(context).load(post.getImage().getUrl()).into(holder.);
+        Glide.with(context).load(post.getImage().getUrl()).into(holder.ivProfileItem);
     }
 
     @Override
@@ -61,17 +55,12 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public ImageView ivProfilePost;
-        public TextView tvUser;
-        public TextView tvUser2;
-        public TextView tvCaption;
-        public TextView tvCreatedAt;
-        public TextView tvLikes;
+        public ImageView ivProfileItem;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            ivProfilePost = itemView.findViewById(R.id.ivProfileImg);
+            ivProfileItem = itemView.findViewById(R.id.ivProfileItem);
         }
 
         @Override

@@ -7,7 +7,7 @@
     android:background="@color/white">
 
     <LinearLayout
-        android:id="@+id/linear_layout"
+        android:id="@+id/linear_layout_post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true">
@@ -39,7 +39,7 @@
         android:id="@+id/vBorder"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/linear_layout"
+        android:layout_below="@id/linear_layout_post"
         android:layout_marginBottom="0dp"
         android:background="@drawable/border" />
 
@@ -57,7 +57,7 @@
         android:id="@+id/tvLikes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/linear_layout"
+        android:layout_alignStart="@+id/linear_layout_post"
         android:layout_below="@+id/btnComment"
         android:layout_marginBottom="3dp"
         android:layout_marginLeft="12dp"
@@ -69,7 +69,7 @@
         android:id="@+id/tvUser2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/linear_layout"
+        android:layout_alignStart="@+id/linear_layout_post"
         android:layout_below="@+id/tvLikes"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="3dp"
