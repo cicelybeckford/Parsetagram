@@ -62,7 +62,7 @@ public class CommentsActivity extends AppCompatActivity {
 
         tvUserDetails.setText(parseUser.getUsername());
         tvCaptionDetails.setText(post.getDescription());
-        tvTime.setText(post.getCreatedAt().toString());
+        tvTime.setText(post.getRelativeTimeAgo());
         if (user.getImage() != null) { Glide.with(getApplicationContext()).load(user.getImage().getUrl()).into(ivProfileImgDetails);}
         rvComments.setLayoutManager(new LinearLayoutManager(this));
         rvComments.setAdapter(commentAdapter);
@@ -77,7 +77,7 @@ public class CommentsActivity extends AppCompatActivity {
                 String message = etNewComment.getText().toString();
                 etNewComment.getText().clear();
                 newComment.setMessage(message);
-                newComment.setUser(parseUser);
+                newComment.setUser(ParseUser.getCurrentUser());
                 newComment.setPost(post);
                 newComment.saveInBackground(new SaveCallback() {
                     @Override

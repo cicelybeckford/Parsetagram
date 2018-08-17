@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -58,7 +59,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.tvMessage.setText(comment.getMessage());
         holder.tvlikesCount.setText(comment.getLikes().toString() + " likes");
         holder.tvTimestamp.setText(comment.getRelativeTimeAgo());
-        //Glide.with(context).load(user.getImage().getUrl()).into(holder.ivProfilePic);
+        if(user.getImage() != null){ Glide.with(context).load(user.getImage().getUrl()).into(holder.ivProfilePic);}
+
     }
 
     @Override
